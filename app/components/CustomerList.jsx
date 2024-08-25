@@ -2,7 +2,7 @@
 
 import { FixedSizeList as List } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner.jsx';
 
 const CustomerList = ({ customers = [], loadMoreItems, hasNextPage, openModal }) => {
   const itemCount = hasNextPage ? customers.length + 1 : customers.length;
@@ -24,7 +24,7 @@ const CustomerList = ({ customers = [], loadMoreItems, hasNextPage, openModal })
         style={style}
         className="flex justify-between items-center p-4 border-b border-gray-700 hover:bg-gray-700 transition duration-200"
       >
-        <div className="text-gray-100 font-semibold text-lg">{customer?.name || 'N/A'}</div>
+        <div className="text-gray-100 font-semibold text-lg" data-testid={`customer-${customer.name}`}>{customer?.name || 'N/A'}</div>
         <div className="text-gray-400 text-md">{customer?.email || 'N/A'}</div>
         <div className="text-gray-400 text-md">{customer?.phone || 'N/A'}</div>
         <div className={`text-md ${customer?.gender === 'Female' ? 'text-pink-500' : 'text-blue-400'}`}>
@@ -48,6 +48,7 @@ const CustomerList = ({ customers = [], loadMoreItems, hasNextPage, openModal })
     >
       {({ onItemsRendered, ref }) => (
         <List
+          role="list"
           height={500}
           itemCount={itemCount}
           itemSize={60}

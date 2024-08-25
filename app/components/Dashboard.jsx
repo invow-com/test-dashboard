@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CustomerList from './CustomerList';
-import CustomerDetailModal from './CustomerDetailModal';
+import CustomerDetailModal from './CustomerDetailModal.jsx';
 import initialData from '../utils/test_dataset.json';
 
 export default function Dashboard() {
@@ -52,9 +52,8 @@ export default function Dashboard() {
       </div>
       {selectedCustomer && (
         <CustomerDetailModal
-          isOpen={true}
-          closeModal={closeModal}
           customer={selectedCustomer}
+          onClose={closeModal}
         />
       )}
     </div>
