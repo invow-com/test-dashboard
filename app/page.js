@@ -3,7 +3,7 @@ import Dashboard from './components/Dashboard';
 
 export default function Page() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="bg-white text-black min-h-screen">
       <Dashboard />
     </div>
   );
